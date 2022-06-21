@@ -5,17 +5,11 @@ function Medicine(props) {
     const orgData = [
 
         {
-
             id: 101,
-
             name: 'Abacavir',
-
             quantity: 25,
-
             price: 150,
-
             expiry: 2022
-
         },
 
         {
