@@ -40,13 +40,12 @@ function Header(props) {
                         </nav>
                         <NavLink to="/Appointment" className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
                             Appointment</NavLink>
-                        <NavLink to="/Singup" className="appointment-btn scrollto">
+                        <NavLink to="/login" className="appointment-btn scrollto">
                             <span className="d-none d-md-inline">Login/ Signup</span>
                         </NavLink>
                     </div>
                 </header>
             </div>
-
         </div>
     );
 }

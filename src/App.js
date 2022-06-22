@@ -10,7 +10,10 @@ import Medicine from "./Container/Medicine"
 import  About  from "./Container/About";
 import {Switch,Route} from "react-router-dom";
 import Doctor from './Container/Doctor';
-import Singup from './Container/Singup';
+import Login from './Container/Login/Login';
+import Loginpage from './Container/Login/Loginpage';
+import SignUp from './Container/Login/SignUp';
+import Forgotpass from './Container/Login/Forgotpass';
 function App() {
   return (
     <>
@@ -22,8 +25,10 @@ function App() {
           <Route exact path="/Appointment" component={Appointment}></Route>
           <Route exact path="/About" component={About}></Route>
           <Route exact path="/Medicine" component={Medicine}></Route>
-          <Route exact path="/Contact" component={Contact}></Route> 
-          <Route exact path="" component={Singup}></Route> 
+          <Route exact path="/Contact" component={Contact}></Route>  
+          <Route exact path="/Login" component={Login}></Route> 
+          <Route exact path="/Forgotpass" component={Forgotpass}></Route> 
+          
       </Switch>
       <Footer /> 
     </>
