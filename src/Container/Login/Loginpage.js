@@ -24,15 +24,8 @@ function LoginPage(props) {
 
     if (userType === 'login') {
         schemaObj = {
-            email: yup
-                .string()
-                .email("Please enter valid Email.")
-                .required("Required!"),
-            password: yup
-                .string()
-                .min(4, "Password should have minimum 4 characters")
-                .max(8, "Password should have maximum 8 characters")
-                .required("Required!"),
+            email: yup.string().email("Please enter valid Email.").required("Required!"),
+            password: yup.string().min(4, "Password should have minimum 4 characters").max(8, "Password should have maximum 8 characters").required("Required!"),
         };
     } else if (userType === 'signup') {
         schemaObj = {
@@ -60,9 +53,7 @@ function LoginPage(props) {
         }
     }
 
-    const schema = yup
-        .object()
-        .shape(schemaObj);
+    const schema= yup.object().shape(schemaObj);
 
     const formContent =
         userType === "login" ? (

@@ -14,6 +14,7 @@ import Login from './Container/Login/Login';
 import Loginpage from './Container/Login/Loginpage';
 import SignUp from './Container/Login/SignUp';
 import Forgotpass from './Container/Login/Forgotpass';
+import ListAppointment from "./Components/ListAppointment";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/Contact" component={Contact}></Route>  
           <Route exact path="/Login" component={Login}></Route> 
           <Route exact path="/Forgotpass" component={Forgotpass}></Route> 
+          <Route exact path="/list_apt" component={ListAppointment}></Route>
           
       </Switch>
       <Footer /> 
