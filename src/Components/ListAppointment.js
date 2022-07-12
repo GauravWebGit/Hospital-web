@@ -31,24 +31,31 @@ function ListAppointment(props) {
     history.push("/Appointment",{id:id});
   }
 
-
+  
   return (
-    <div className="row">
-      <div className="col-6">
-        <NavLink to="/Appointment" className="appointment-btn" >
+  <div className="py-5">
+    <div className="container">
+    <div className="row text-center">
+      <div className="col-12">
+        <h2 className="text-primary fw-bolder mb-3">APPOINTMENT LIST</h2>
+      </div>
+    <div>
+      <div className="d-inline-block">
+        <NavLink to="/Appointment" className="btn btn-warning me-5" >
           Book Appointment
         </NavLink>
       </div>
-      <div className="col-6">
-        <NavLink  to="/list_apt" className="appointment-btn">
+      {/* <div className="d-inline-block">
+        <NavLink  to="/list_apt" className="btn btn-warning">
           List Appointment
         </NavLink>
-      </div>
-      <div>
+      </div> */}
+    </div>
+      <div className="d-flex flex-wrap">
         {data.map((d) => {
           return (
-            <div key={d.id}>
-              <Card>
+            <div key={d.id} className="play">
+              <Card className="Card me-3 p-2">
                 <CardBody>
                   <CardTitle tag="h5">{d.name}</CardTitle>
                   <CardSubtitle className="mb-2 text-muted" tag="h6">
@@ -64,8 +71,8 @@ function ListAppointment(props) {
                     {d.message}
                   </CardSubtitle>
                   <CardText>{d.department}</CardText>
-                  <Button onClick={() => Editfun(d.id)}>Edit</Button>
-                  <Button onClick={() => handledelete(d.id)}>Delete</Button>
+                  <Button className="btn btn-primary me-3" onClick={() => Editfun(d.id)}>Edit</Button>
+                  <Button className="btn btn-danger" onClick={() => handledelete(d.id)}>Delete</Button>
                 </CardBody>
               </Card>
             </div>
@@ -73,6 +80,8 @@ function ListAppointment(props) {
         })}
       </div>
     </div>
+    </div>
+  </div>
   );
 }
 

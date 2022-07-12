@@ -61,13 +61,20 @@ function Login(props) {
     }
   }
 
+  const handlelogin = () =>{
+     localStorage.setItem("user", "1213");
+  }
+
   const formik = useFormik({
     initialValues: inintVal,
     validationSchema: schema,
     onSubmit: (values, action) => {
-      alert(JSON.stringify(values, null, 2));
       action.resetForm();
-      handleData(values)
+      if(userType=="login"){
+        handlelogin();
+      }else{
+        handleData(values);
+      }
     },
     enableReinitialize: true,
   });

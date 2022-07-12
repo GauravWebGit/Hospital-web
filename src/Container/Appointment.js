@@ -107,11 +107,11 @@ function Appointment(props) {
             </p>
           </div>
           <div className="row">
-            <div className="col-2">
+            {/* <div className="col-2">
               <NavLink to="/Appointment" className="appointment-btn">Book Appointment</NavLink>
-            </div>
-            <div className="col-1">
-              <NavLink to="/list_apt" className="appointment-btn">List Appointment</NavLink>
+            </div> */}
+            <div className="text-center">
+              <NavLink to="/list_apt" className="btn btn-warning mb-3">List Appointment</NavLink>
             </div>
           </div>
 
