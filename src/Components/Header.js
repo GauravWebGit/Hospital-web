@@ -1,10 +1,17 @@
-import React from 'react';
+import{ React, useContext} from 'react';
 import {NavLink} from "react-router-dom";
+import ThemeContext from '../Context/ThemeContext';
+
+
 function Header(props) {
+
+    const value = useContext(ThemeContext)
+
+    console.log(value);
     return (
         <div>
             <div className="main-header">
-                <div id="topbar" className="d-flex align-items-center fixed-top">
+                <div id="topbar" className= {`d-flex align-items-center fixed-top ${value.theme}`} >
                     <div className="container d-flex justify-content-between">
                         <div className="contact-info d-flex align-items-center">
                             <i className="bi bi-envelope" /> <a href="mailto:contact@example.com">cityhospital@example.com</a>
@@ -43,6 +50,10 @@ function Header(props) {
                         <NavLink to="/login" className="appointment-btn scrollto">
                             <span className="d-none d-md-inline">Login/ Signup</span>
                         </NavLink>
+                        <div className="form-check form-switch">
+                             <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" defaultChecked />
+                         </div>
+
                     </div>
                 </header>
             </div>

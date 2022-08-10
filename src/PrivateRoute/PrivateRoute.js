@@ -2,7 +2,8 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { isLogin } from '../Utility/Utility';
 
-function privateroute({component:Component , ...rest}) {
+function Privateroute({component:Component , ...rest}) {
+    console.log(isLogin());
     return (
         <Route {...rest} render = {props =>(
             isLogin()?
@@ -14,4 +15,4 @@ function privateroute({component:Component , ...rest}) {
     );
 }
 
-export default privateroute;
+export default Privateroute;

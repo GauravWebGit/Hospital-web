@@ -2,9 +2,11 @@ import react from "react";
 import {Card,CardBody,CardTitle,CardSubtitle,CardText,Button,} from "reactstrap";
 import { NavLink, useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import TextField from "@mui/material/TextField";
 
 function ListAppointment(props) {
   const [data, setData] = useState([]);
+  const [search,setSearch] =useState([])
   const history = useHistory();
  
 
@@ -31,7 +33,17 @@ function ListAppointment(props) {
     history.push("/Appointment",{id:id});
   }
 
-  
+  const Searchdata= (val) => {
+     let localdata=JSON.parse(localStorage.getItem("apt"));
+     
+     let newData=localdata.filter((appoint) => (
+       appoint.date.toString().includes(val)||
+       appoint.department.toLowerCase().includes(val.toLowerCase())
+     ))
+     setSearch(newData);
+     console.log(newData);
+  }
+  const newsearchData= search.length>0 ? search: data;
   return (
   <div className="py-5">
     <div className="container">
@@ -41,7 +53,7 @@ function ListAppointment(props) {
       </div>
     <div>
       <div className="d-inline-block">
-        <NavLink to="/Appointment" className="btn btn-warning me-5" >
+        <NavLink to="/Appointment" className="btn btn-warning p-3 m-2" >
           Book Appointment
         </NavLink>
       </div>
@@ -50,9 +62,19 @@ function ListAppointment(props) {
           List Appointment
         </NavLink>
       </div> */}
+      <TextField sx={{width:500,}}
+          margin="dense"
+          name="Name"
+          label="Search"
+          type="text"
+          fullWidth
+          variant="filled"
+          id="filled-basic"
+          onChange={(e) => Searchdata(e.target.value)}
+        />
     </div>
       <div className="d-flex flex-wrap">
-        {data.map((d) => {
+        {newsearchData.map((d) => {
           return (
             <div key={d.id} className="play">
               <Card className="Card me-3 p-2">
