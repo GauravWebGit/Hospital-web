@@ -10,7 +10,7 @@ export const ThemeReducer =(state,action)=>{
             case TOGGLE_THEME:
                 return{
                     ...state,
-                    theme:ThemeProvider
+                    theme:action.payload
                 }
         
             default:

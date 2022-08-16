@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 # Top Bar
 --------------------------------------------------------------*/
 #topbar {
-  background: #fff;
+  /* background: #fff; */
   height: 40px;
   font-size: 14px;
   transition: all 0.5s;
@@ -160,7 +160,7 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  /* background: #fff; */
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
@@ -1769,4 +1769,18 @@ section {
 .Card{
   display:block;
   margin: 10px 0 10px 0;
+}
+
+.light{
+   color: #000;
+   background-color: #ffff;
+}
+.dark a,
+.dark a i
+.dark i{
+  color:#fff;
+}
+.dark{
+  color: #ffff;
+  background-color: #000;
 }
