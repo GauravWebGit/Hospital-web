@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import * as yup from "yup";
 import { Formik, Form, useFormik } from "formik";
+import {useDispatch} from 'react-'
+import { ActionTypes } from "@mui/base";
 
 function Singup(props) {
   const [userType, setUsertype] = useState("login");
   const [reset, setReset] = useState(false);
+
+  const dispatch =useDispatch()
 
   let schemaobj, inintVal;
   if (userType === "login") {
@@ -44,10 +48,19 @@ function Singup(props) {
     // },
     initialValues: inintVal,
     validationSchema: schema,
-    onSubmit: (values) => {
+    onSubmit: (values,action) => {
+       dispatch(sighUpAction(values));
       alert(JSON.stringify(values, null, 2));
+      if(userType === 'login'){
+        handleSignup()
+      }
+      Action.resetForm();
     },
+   
   });
+  const handleSignup = () => {
+    localStorage.setItem('Gaurav','Gaurav4454')
+  }
   const { errors, handleBlur, handleChange, handleSubmit, touched } = formik;
   return (
     <section id="appointment" className="appointment">
@@ -182,11 +195,13 @@ function Singup(props) {
               )}
               {userType === "password" ? (
                 <div className="signup-link col-4">
-                  <a
-                    className="d-inline-block"
-                    onClick={() => setUsertype("login")}
-                  ></a>
-                </div>
+                <a
+                  className="d-inline-block"
+                  onClick={() => setUsertype("login")}
+                >
+                  Already user?
+                </a>
+              </div>
               ) : userType === "login" ? (
                 <div className="signup-link text-center col-12 justify-content-between">
                   <a
@@ -222,7 +237,7 @@ function Singup(props) {
                 </div>
               ) : (
                 (<div class="text-center mt-3">
-                  <button type="submit">Sign Up</button>
+                  <button type="submit" onClick={() => {handleSignup()}}>Sign Up</button>
                 </div>)
               )}
             </div>
