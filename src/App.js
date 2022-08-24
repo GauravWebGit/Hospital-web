@@ -10,17 +10,14 @@ import  Contact from "./Container/Contact";
 import  About  from "./Container/About";
 import {Switch,Route} from "react-router-dom";
 import Doctor from './Container/Doctor';
-import Login from './Container/Login/Login';
-import Loginpage from './Container/Login/Loginpage';
-import SignUp from './Container/Login/SignUp';
 import Medicine from "./Medicine/Medicine";
-import Forgotpass from './Container/Login/Forgotpass';
 import ListAppointment from "./Components/ListAppointment";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PublicRoute from "./PublicRoute/PublicRoute";
 import { ThemeProvider } from "./Context/ThemeContext";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
+import Singup from "./Container/Singup";
 
 
 function App() {
@@ -36,9 +33,8 @@ function App() {
                   <PrivateRoute exact path="/Appointment" component={Appointment} />
                   <PublicRoute exact path="/About" component={About}/>
                   <PublicRoute exact path="/Contact" component={Contact}/>  
-                  <PublicRoute exact path="/login" restricted={true} component={Login}/> 
+                  <PublicRoute exact path="/Singup" restricted={true} component={Singup}/> 
                   <PrivateRoute exact path="/Medicine" component={Medicine}/> 
-                  <PublicRoute exact path="/Forgotpass" component={Forgotpass}/> 
                   <PrivateRoute exact path="/list_apt" component={ListAppointment}/>
             </Switch>
           <Footer /> 

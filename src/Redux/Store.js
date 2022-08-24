@@ -1,7 +1,8 @@
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk'
-import mySaga from '../Saga/Auth.saga'
+import { watchAuth } from '../Saga/Auth.saga'
+import { rootsaga } from '../Saga/rootSaga'
 import { rootReducer } from './rootReducer'
 
 
@@ -15,6 +16,6 @@ export const store = createStore(
 )
 
 // then run the saga
-sagaMiddleware.run(mySaga)
+sagaMiddleware.run(rootsaga)
 
 // render the application
