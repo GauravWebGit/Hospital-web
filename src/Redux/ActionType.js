@@ -1,1 +1,2 @@
 export const SINGUP_USER ="SINGUP_USER"
+export const SINGIN_USER ="SINGIN_USER"

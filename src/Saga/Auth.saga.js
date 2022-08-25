@@ -1,6 +1,6 @@
 import { call, put, takeEvery, takeLatest,all } from 'redux-saga/effects'
 import * as AT from '../Redux/ActionType'
-import { userApi } from './AuthAPI';
+import { SignInAPI, userApi } from './AuthAPI';
 
 function* SingUpSaga(action) {
    try {
@@ -11,12 +11,27 @@ function* SingUpSaga(action) {
    }
 }
 
-function* watchSaga() {
+function* SignInsaga(action){
+   try{
+      const user = yield call(SignInAPI,action.payload);
+
+   }catch(e){
+      yield put({type:"USER_FETCH_FAILED",message:e.message})
+   }
+}
+
+function* watchSignup() {
   yield takeEvery(AT.SINGUP_USER, SingUpSaga);
 }
 
-export function* watchAuth(){
-    yield all([watchSaga()]);
+function* watchSignin(){
+   yield takeEvery(AT.SINGIN_USER,SignInsaga)
 }
 
-export default watchSaga;
+export function* watchAuth(){
+    yield all([
+      watchSignup(),
+      watchSignin()
+
+   ]);
+}

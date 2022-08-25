@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { Formik, Form, useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { signUpAction } from "../Redux/action/Auth.action";
+import { signInAction, signUpAction } from "../Redux/action/Auth.action";
 
 function Login(props) {
   const [userType, setUsertype] = useState("login");
@@ -54,13 +54,11 @@ function Login(props) {
     initialValues: inintVal,
     validationSchema: schema,
     onSubmit: (values, action) => {
-
-      dispatch(signUpAction(values))
-
-
       // alert(JSON.stringify(values, null, 2));
       if (userType ==='login') {
-        handleLogin();
+        dispatch(signInAction(values));
+      }else if(userType==='signup'){
+        dispatch(signUpAction(values));
       }
       action.resetForm();
     },
