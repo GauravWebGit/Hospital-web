@@ -11,6 +11,7 @@ export const userApi = (values) => {
   console.log("newUser", values);
   // firebase intigration
   return new Promise((resolve, reject) => {
+    console.log(auth, values.email, values.password);
     createUserWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
         // Signed in
@@ -21,11 +22,10 @@ export const userApi = (values) => {
             // User is signed in
             const uid = user.uid;
             sendEmailVerification(auth.currentUser).then(() => {
+              console.log(auth.currentUser);
               // Email verification sent!
-              alert("Email verification sent your email!");
+              resolve("Email verification sent your email!");
             });
-          } else {
-            // User is signed out
           }
         });
       })
@@ -33,23 +33,23 @@ export const userApi = (values) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
-          alert("This email is already in use");
+          reject("This email is already in use");
         }
       });
   });
 };
 
 export const SignInAPI = (values) => {
-  console.log("sign in successfully",values);
+  // console.log("sign in successfully",values);
   return new Promise((resolve, reject) => {
     signInWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         if(!user.emailVerified){
-          alert("Please verify your email");
+          reject("Please verify your email");
         }else{
-          alert("Login in successfully")
+          resolve("Login in successfully")
         }
         // ...
       })
@@ -57,12 +57,16 @@ export const SignInAPI = (values) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         if(errorCode.localeCompare("auth/wrong-password")===0){
-          alert("LOGIN ERROR:Wrong Email or Password");
+          reject("LOGIN ERROR:Wrong Email or Password");
         }else if(errorCode.localeCompare("auth/user-not-found")===0){
-          alert("User not found");
+          reject("User not found");
         }else{
-          console.log("");
+          reject("");
         }
       });
   });
 };
+
+export const forgotPasswdAPI =(values) =>{
+    console.log("send OTP your Email",values);
+}

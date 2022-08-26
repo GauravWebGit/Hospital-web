@@ -9,3 +9,7 @@ export const signUpAction = (values) => (dispatch) => {
 export const signInAction = (values) => (dispatch) => {
     dispatch({type:AT.SINGIN_USER,payload:values})
 }
+
+export const forgotPasswd = (values) =>(dispatch) =>{
+   dispatch({type:AT.FORGOT_PASSWORD,payload:values})
+} 

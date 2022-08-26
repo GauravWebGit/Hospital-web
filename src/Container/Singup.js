@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { Formik, Form, useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { signInAction, signUpAction } from "../Redux/action/Auth.action";
+import { forgotPasswd, signInAction, signUpAction } from "../Redux/action/Auth.action";
 
 function Login(props) {
   const [userType, setUsertype] = useState("login");
@@ -59,6 +59,8 @@ function Login(props) {
         dispatch(signInAction(values));
       }else if(userType==='signup'){
         dispatch(signUpAction(values));
+      }else if(userType==="password"){
+        dispatch(forgotPasswd(values));
       }
       action.resetForm();
     },
