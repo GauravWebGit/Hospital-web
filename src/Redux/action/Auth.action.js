@@ -13,3 +13,8 @@ export const signInAction = (values) => (dispatch) => {
 export const forgotPasswd = (values) =>(dispatch) =>{
    dispatch({type:AT.FORGOT_PASSWORD,payload:values})
 } 
+
+export const logOutAction = () => (dispatch) =>{
+    console.log("Done runing");
+    dispatch({type:AT.SIGNOUT_USER});
+}

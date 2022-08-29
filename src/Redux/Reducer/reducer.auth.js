@@ -1,4 +1,4 @@
-
+import * as AT from "../ActionType";
 const initVal ={
     isLoading:false,
     user:null,

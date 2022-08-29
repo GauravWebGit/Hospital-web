@@ -3,6 +3,7 @@ import {
   onAuthStateChanged,
   sendEmailVerification,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import Popup from "reactjs-popup";
 import { auth } from "../Firebase";
@@ -61,12 +62,24 @@ export const SignInAPI = (values) => {
         }else if(errorCode.localeCompare("auth/user-not-found")===0){
           reject("User not found");
         }else{
-          reject("");
+          reject("LOGIN ERROR:Wrong Email or Password")
         }
       });
   });
 };
 
+export const signOutAPI = () => {
+  console.log("logout successfully");
+   return new Promise((resolve,reject) => {
+        signOut(auth).then(() => {
+          resolve("Sign-out successful")
+        }).catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            reject(errorCode,"something went to wrong");
+        });
+   });
+}
 export const forgotPasswdAPI =(values) =>{
     console.log("send OTP your Email",values);
 }

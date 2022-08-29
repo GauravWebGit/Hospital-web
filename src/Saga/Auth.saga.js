@@ -1,7 +1,7 @@
 import { call, put, takeEvery, takeLatest,all } from 'redux-saga/effects'
 import { setAlert } from '../Redux/action/alert.action';
 import * as AT from '../Redux/ActionType'
-import { forgotPasswdAPI, SignInAPI, userApi } from './AuthAPI';
+import { forgotPasswdAPI, SignInAPI, signOutAPI, userApi } from './AuthAPI';
 
 function* SingUpSaga(action) {
    try {
@@ -30,6 +30,19 @@ function* SignInsaga(action){
    }
 }
 
+function* signOutsaga(action){
+   console.log(action,"action Done");
+   try{
+      const user=yield call(signOutAPI,action.payload);
+      console.log(user);
+      yield put(setAlert({text:user,color:"success"}))
+   }catch(e){
+      console.log(e);
+      yield put(setAlert({text:e, color:"error"}))
+   }
+}
+
+
 function* forgotPasswd(action){
    try{
       const user = yield call(forgotPasswdAPI,action.payload);
@@ -47,6 +60,9 @@ function* watchSignin(){
    yield takeEvery(AT.SINGIN_USER,SignInsaga)
 }
 
+function* watchlogOut(){
+   yield takeEvery(AT.SIGNOUT_USER,signOutsaga)
+}
 function* watchForgotPasswd(){
    yield takeEvery(AT.FORGOT_PASSWORD,forgotPasswd)
 }
@@ -55,7 +71,8 @@ export function* watchAuth(){
     yield all([
       watchSignup(),
       watchSignin(),
-      watchForgotPasswd()
+      watchForgotPasswd(),
+      watchlogOut()
 
    ]);
 }
