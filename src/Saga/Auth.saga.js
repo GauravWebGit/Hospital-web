@@ -1,6 +1,6 @@
 import { call, put, takeEvery, takeLatest,all } from 'redux-saga/effects'
 import { setAlert } from '../Redux/action/alert.action';
-import { SignedInAction } from '../Redux/action/Auth.action';
+import { logedOutAction, SignedInAction } from '../Redux/action/Auth.action';
 import * as AT from '../Redux/ActionType'
 import { forgotPasswdAPI, SignInAPI, signOutAPI, userApi } from './AuthAPI';
 
@@ -36,6 +36,7 @@ function* signOutsaga(action){
    try{
       const user=yield call(signOutAPI,action.payload);
       console.log(user);
+      yield put(logedOutAction())
       yield put(setAlert({text:user,color:"success"}))
    }catch(e){
       console.log(e);

@@ -74,7 +74,8 @@ export const signOutAPI = () => {
   console.log("logout successfully");
    return new Promise((resolve,reject) => {
         signOut(auth).then(() => {
-          resolve("Sign-out successful")
+          resolve("Sign-out successful");
+          history.push("/login");
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;

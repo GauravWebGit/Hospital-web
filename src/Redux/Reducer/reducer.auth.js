@@ -15,6 +15,13 @@ export const reducerAuth =(state=initVal,action) =>{
                 isLoading:false,
                 error:false,
             }
+        case AT.SIGNEDOUT_USER:
+            return{
+                ...state,
+                user:null,
+                isLoading:false,
+                error:false,
+            }
         default:
             return state;
      }

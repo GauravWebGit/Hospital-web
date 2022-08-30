@@ -18,6 +18,9 @@ export const forgotPasswd = (values) =>(dispatch) =>{
 } 
 
 export const logOutAction = () => (dispatch) =>{
-    console.log("Done runing");
     dispatch({type:AT.SIGNOUT_USER});
+}
+
+export const logedOutAction = () => (dispatch) => {
+    dispatch({type:AT.SIGNEDOUT_USER})
 }

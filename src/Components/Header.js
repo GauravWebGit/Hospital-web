@@ -112,7 +112,7 @@ function Header(props) {
               <NavLink to="/Singup" className="appointment-btn scrollto">
               <span className="d-none d-md-inline">Login/ Signup</span>
             </NavLink>:
-            <NavLink to="/" className="appointment-btn scrollto">
+            <NavLink to="//Singup" className="appointment-btn scrollto">
               <span className="d-none d-md-inline" onClick={handleLogOut}>Log Out</span>
             </NavLink>
             }
