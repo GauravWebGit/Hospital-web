@@ -16,30 +16,33 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PublicRoute from "./PublicRoute/PublicRoute";
 import { ThemeProvider } from "./Context/ThemeContext";
 import { Provider } from "react-redux";
-import { store } from "./Redux/Store";
+import { persistor, store } from "./Redux/Store";
 import Singup from "./Container/Singup";
 import { SnackbarProvider } from 'notistack';
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   return (
     <>
   <SnackbarProvider maxSnack={3}>
       <Provider store={store}>
-        <ThemeProvider>
-            <Header />
-              <Switch>
-                    <PublicRoute exact path="/" component={Home}/>
-                    <PublicRoute exact path="/Departments" component={Departments}/>
-                    <PublicRoute exact path="/Doctor" component={Doctor}/>
-                    <PrivateRoute exact path="/Appointment" component={Appointment} />
-                    <PublicRoute exact path="/About" component={About}/>
-                    <PublicRoute exact path="/Contact" component={Contact}/>  
-                    <PublicRoute exact path="/Singup" restricted={true} component={Singup}/> 
-                    <PrivateRoute exact path="/Medicine" component={Medicine}/> 
-                    <PrivateRoute exact path="/list_apt" component={ListAppointment}/>
-              </Switch>
-            <Footer /> 
-          </ThemeProvider>
+          <PersistGate loading={null} persistor={persistor}>
+            <ThemeProvider>
+                <Header />
+                  <Switch>
+                        <PublicRoute exact path="/" component={Home}/>
+                        <PublicRoute exact path="/Departments" component={Departments}/>
+                        <PublicRoute exact path="/Doctor" component={Doctor}/>
+                        <PrivateRoute exact path="/Appointment" component={Appointment} />
+                        <PublicRoute exact path="/About" component={About}/>
+                        <PublicRoute exact path="/Contact" component={Contact}/>  
+                        <PublicRoute exact path="/Singup" restricted={true} component={Singup}/> 
+                        <PrivateRoute exact path="/Medicine" component={Medicine}/> 
+                        <PrivateRoute exact path="/list_apt" component={ListAppointment}/>
+                  </Switch>
+                <Footer /> 
+              </ThemeProvider>
+          </PersistGate>
       </Provider>
     </SnackbarProvider>
     </>

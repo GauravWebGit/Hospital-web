@@ -6,7 +6,8 @@ import {
   signOut,
 } from "firebase/auth";
 import Popup from "reactjs-popup";
-import { auth } from "../Firebase";
+import { auth } from "../Firebase"; 
+import { history } from "../history";
 
 export const userApi = (values) => {
   console.log("newUser", values);
@@ -50,7 +51,8 @@ export const SignInAPI = (values) => {
         if(!user.emailVerified){
           reject("Please verify your email");
         }else{
-          resolve("Login in successfully")
+          resolve(user);
+          history.push("/");
         }
         // ...
       })

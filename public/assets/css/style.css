@@ -1747,8 +1747,7 @@ section {
   color: #fff;
   text-decoration: none;
 }
-
-.img-fluid {
+.img-fluid{
   max-width: 100%;
   height: 250px;
 }
