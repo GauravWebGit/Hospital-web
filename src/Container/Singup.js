@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { Formik, Form, useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { forgotPasswd, signInAction, signUpAction } from "../Redux/action/Auth.action";
+import { forgotPasswd, googleSignedInAction, signInAction, signUpAction } from "../Redux/action/Auth.action";
 
 function Login(props) {
   const [userType, setUsertype] = useState("login");
@@ -70,6 +70,10 @@ function Login(props) {
 
   const handleLogin = () =>{
     localStorage.setItem('Gaurav', '12121212')
+  }
+
+  const handleGoogle = () =>{
+    dispatch(googleSignedInAction());
   }
 
   return (
@@ -215,6 +219,11 @@ function Login(props) {
                   <button type="submit">Sign Up</button>
                 </div>
               )}
+              <div className="d-lg-flex social-links">
+              <a className="google" onClick={handleGoogle}>
+                <i className="bi bi-google" />
+              </a>
+            </div>
             </div>
           </Form>
         </Formik>

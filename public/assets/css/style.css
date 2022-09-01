@@ -1783,3 +1783,15 @@ section {
   color: #ffff;
   background-color: #000;
 }
+a.google {
+  font-size: 20px;
+  text-align: center;
+  color: #ff6337;
+  display: inline-block;
+  transition:all 0.5s;
+}
+a.google:hover{
+  font-size: 20px;
+  text-align: center;
+  color: #1592d6;
+}

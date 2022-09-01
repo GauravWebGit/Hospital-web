@@ -4,6 +4,8 @@ import {
   sendEmailVerification,
   signInWithEmailAndPassword,
   signOut,
+  GoogleAuthProvider, 
+  signInWithPopup
 } from "firebase/auth";
 import Popup from "reactjs-popup";
 import { auth } from "../Firebase"; 
@@ -83,6 +85,26 @@ export const signOutAPI = () => {
         });
    });
 }
-export const forgotPasswdAPI =(values) =>{
+
+export const googleSigninAPI = () => {
+  return new Promise((resolve,reject) => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      resolve({payload:user});
+      history.push("/");
+    }).catch((error) => {
+      const errorCode = error.code;
+      reject(errorCode);
+      const errorMessage = error.message;
+      const email = error.customData.email;
+      const credential = GoogleAuthProvider.credentialFromError(error);
+    })
+  });
+}
+  export const forgotPasswdAPI =(values) =>{
     console.log("send OTP your Email",values);
 }
