@@ -5,7 +5,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
   GoogleAuthProvider, 
-  signInWithPopup
+  signInWithPopup,
+  sendPasswordResetEmail, 
+  getAuth
 } from "firebase/auth";
 import Popup from "reactjs-popup";
 import { auth } from "../Firebase"; 
@@ -106,6 +108,22 @@ export const googleSigninAPI = () => {
     })
   });
 }
-  export const forgotPasswdAPI =(values) =>{
-    console.log("send OTP your Email",values);
+  export const resetPasswordAPI =({email}) =>{
+    return new Promise((resolve,reject) => {
+      const auth = getAuth();
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+            resolve("Password reset email sent!");
+            history.push("/");
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          if (errorCode.localeCompare("auth/invalid-value-(email),-starting-an-object-on-a-scalar-field") === 0) {
+            reject("Please Enter registred email");
+          } else {
+            reject("Somthing went wrong");
+          }
+        });
+    })
 }

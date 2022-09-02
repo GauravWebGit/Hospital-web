@@ -5,6 +5,6 @@ export const SIGNOUT_USER ="SIGNOUT_USER"
 export const SINGEDIN_USER ="SINGEDIN_USER"
 export const SIGNEDOUT_USER ="SIGNEDOUT_USER"
 export const GOOGLE_SIGN_USER ="GOOGLE_SIGN_USER"
-
-export const SET_ALERT = "SET_ALERT";
-export const RESET_ALERT ="RESET_ALERT";
+export const RESET_PASSWORD="RESET_PASSWORD"
+export const SET_ALERT = "SET_ALERT"
+export const RESET_ALERT ="RESET_ALERT"

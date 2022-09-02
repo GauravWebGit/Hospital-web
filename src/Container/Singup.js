@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { Formik, Form, useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { forgotPasswd, googleSignedInAction, googleSignInAction, signInAction, signUpAction } from "../Redux/action/Auth.action";
+import { forgotPasswd, googleSignedInAction, googleSignInAction, resetPasswordAction, signInAction, signUpAction } from "../Redux/action/Auth.action";
 
 function Login(props) {
   const [userType, setUsertype] = useState("login");
@@ -60,7 +60,7 @@ function Login(props) {
       }else if(userType==='signup'){
         dispatch(signUpAction(values));
       }else if(userType==="password"){
-        dispatch(forgotPasswd(values));
+        dispatch(resetPasswordAction(values));
       }
       action.resetForm();
     },
@@ -206,6 +206,7 @@ function Login(props) {
                   </a>
                 </div>
               )}
+              
               {userType === "password" ? (
                 <div className="text-center mt-3">
                   <button type="submit">Send OTP</button>

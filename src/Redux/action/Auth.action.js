@@ -27,3 +27,7 @@ export const logedOutAction = () => (dispatch) => {
 export const googleSignInAction = () =>(dispatch) => {
     dispatch({type:AT.GOOGLE_SIGN_USER})
 }
+
+export const resetPasswordAction = (mail) => (dispatch) => {
+   dispatch({type:AT.RESET_PASSWORD,payload:mail})
+}
