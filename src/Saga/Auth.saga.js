@@ -1,6 +1,6 @@
 import { call, put, takeEvery, takeLatest,all } from 'redux-saga/effects'
 import { setAlert } from '../Redux/action/alert.action';
-import { googleSignedInAction, logedOutAction, SignedInAction } from '../Redux/action/Auth.action';
+import { googleSignedInAction, googleSignInAction, logedOutAction, SignedInAction } from '../Redux/action/Auth.action';
 import * as AT from '../Redux/ActionType'
 import { forgotPasswdAPI, googleSigninAPI, SignInAPI, signOutAPI, userApi } from './AuthAPI';
 
@@ -34,7 +34,8 @@ function* SignInsaga(action){
 function* googleSignInsaga(action){
    try{
       const user = yield call(googleSigninAPI);
-      yield put(googleSignedInAction(user));
+      yield put(SignedInAction(user));
+      console.log(action.payload);
       yield put(setAlert({text:"Login in successfully",color:"success"}))
       
    }catch(e){

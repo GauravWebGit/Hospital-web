@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as yup from "yup";
 import { Formik, Form, useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { forgotPasswd, googleSignedInAction, signInAction, signUpAction } from "../Redux/action/Auth.action";
+import { forgotPasswd, googleSignedInAction, googleSignInAction, signInAction, signUpAction } from "../Redux/action/Auth.action";
 
 function Login(props) {
   const [userType, setUsertype] = useState("login");
@@ -73,7 +73,7 @@ function Login(props) {
   }
 
   const handleGoogle = () =>{
-    dispatch(googleSignedInAction());
+    dispatch(googleSignInAction());
   }
 
   return (

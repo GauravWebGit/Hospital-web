@@ -24,6 +24,6 @@ export const logOutAction = () => (dispatch) =>{
 export const logedOutAction = () => (dispatch) => {
     dispatch({type:AT.SIGNEDOUT_USER})
 }
-export const googleSignedInAction = () =>(dispatch) => {
+export const googleSignInAction = () =>(dispatch) => {
     dispatch({type:AT.GOOGLE_SIGN_USER})
 }
